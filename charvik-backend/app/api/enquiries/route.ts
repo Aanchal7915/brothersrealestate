@@ -10,7 +10,7 @@ import { getEnquiryEmailTemplate, getEnquiryConfirmationEmailTemplate } from "@/
 // "List With Us" (ListWithUs.jsx) reuses this endpoint but only collects a
 // phone number, so it fills this placeholder in as the email — there's no
 // real inbox to confirm to.
-const NO_EMAIL_PLACEHOLDER = "not-provided@brothersestate.com";
+const NO_EMAIL_PLACEHOLDER = "not-provided@brothersrealestate.com";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

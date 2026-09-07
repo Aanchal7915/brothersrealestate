@@ -5,7 +5,7 @@ interface SendEmailOptions {
   html: string;
 }
 
-/** "BrothersEstate <aanchal2115@gmail.com>" -> { name, email } */
+/** "BrothersRealEstate <aanchal2115@gmail.com>" -> { name, email } */
 function parseFromHeader(raw: string): { name: string; email: string } {
   const match = raw.match(/^\s*(.*?)\s*<([^<>]+)>\s*$/);
   if (match) return { name: match[1] || "Brothers Realestate", email: match[2] };
@@ -30,7 +30,7 @@ export async function sendEmail(options: SendEmailOptions): Promise<boolean> {
     return false;
   }
 
-  const fromRaw = process.env.BREVO_FROM || process.env.FROM_EMAIL || "Brothers Realestate <no-reply@brothersestate.com>";
+  const fromRaw = process.env.BREVO_FROM || process.env.FROM_EMAIL || "Brothers Realestate <no-reply@brothersrealestate.com>";
   const { name: fromName, email: fromEmail } = parseFromHeader(fromRaw);
 
   try {

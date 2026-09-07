@@ -46,7 +46,7 @@ const ListWithUs = () => {
         name: form.name,
         phone: form.phone,
         // The endpoint requires an email; owners only give a phone here.
-        email: "not-provided@brothersestate.com",
+        email: "not-provided@brothersrealestate.com",
         message: `[LIST WITH US] ${form.details}`,
         source: "list-with-us",
         sourceLabel: "List With Us — owner wants us to market a property",

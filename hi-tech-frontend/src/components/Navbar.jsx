@@ -99,7 +99,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               />
               <span className="block text-left leading-tight">
                 <span className="block whitespace-nowrap font-serif text-[15px] font-semibold uppercase tracking-[0.1em] text-white sm:text-base sm:tracking-[0.14em]">
-                  Brothers <span className="text-gold">Estate</span>
+                  Brothers <span className="text-gold">RealEstate</span>
                 </span>
                 <span className="hidden whitespace-nowrap text-[9px] font-semibold uppercase tracking-[0.18em] text-white/50 lg:block">
                   {SITE.tagline}

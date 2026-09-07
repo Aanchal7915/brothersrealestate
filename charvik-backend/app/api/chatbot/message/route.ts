@@ -273,7 +273,7 @@ async function generateAIResponse(
 Company Information:
 - Name: Brothers Realestate
 - Phone: +91-123456 7899
-- Email: info@brothersestate.com
+- Email: info@brothersrealestate.com
 - Location: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009
 - Specialization: Premium residential properties
 
@@ -353,7 +353,7 @@ CONVERSATION STYLE:
 - When no match: be apologetic but helpful
 - Always end with a helpful follow-up question or offer
 - Keep responses concise but informative (2-4 sentences for most answers)
-- For contact queries, provide: Phone: +91-123456 7899, Email: info@brothersestate.com`,
+- For contact queries, provide: Phone: +91-123456 7899, Email: info@brothersrealestate.com`,
       },
     ];
 
@@ -437,7 +437,7 @@ function generateFallbackResponse(
     lowerMessage.includes("call") ||
     lowerMessage.includes("dealer")
   ) {
-    return `📞 Contact Brothers Realestate:\n\n• Phone: +91-123456 7899\n• Email: info@brothersestate.com\n• Location: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nOur team is ready to assist you! You can also click on any property to contact the dealer directly. How else can I help you? 😊`;
+    return `📞 Contact Brothers Realestate:\n\n• Phone: +91-123456 7899\n• Email: info@brothersrealestate.com\n• Location: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nOur team is ready to assist you! You can also click on any property to contact the dealer directly. How else can I help you? 😊`;
   }
 
   if (
@@ -454,11 +454,11 @@ function generateFallbackResponse(
     lowerMessage.includes("viewing") ||
     lowerMessage.includes("tour")
   ) {
-    return `I'd love to help you schedule a property visit! 🏠\n\nPlease contact us:\n📱 Call: +91-956000 2261\n📧 Email: info@brothersestate.com\n\nOr fill out the enquiry form on our Contact page. Our team will arrange a convenient time for you! What type of property are you interested in? 😊`;
+    return `I'd love to help you schedule a property visit! 🏠\n\nPlease contact us:\n📱 Call: +91-956000 2261\n📧 Email: info@brothersrealestate.com\n\nOr fill out the enquiry form on our Contact page. Our team will arrange a convenient time for you! What type of property are you interested in? 😊`;
   }
 
   if (lowerMessage.includes("about") || lowerMessage.includes("who are you") || lowerMessage.includes("company")) {
-    return `Brothers Realestate - Your trusted real estate partner! 🏡\n\nWe specialize in:\n✅ Premium residential properties\n✅ Expert property consultation\n✅ Transparent dealings\n✅ Customer satisfaction\n\n📞 Contact: +91-123456 7899\n📧 Email: info@brothersestate.com\n\nHow can I help you find your dream home today? 😊`;
+    return `Brothers Realestate - Your trusted real estate partner! 🏡\n\nWe specialize in:\n✅ Premium residential properties\n✅ Expert property consultation\n✅ Transparent dealings\n✅ Customer satisfaction\n\n📞 Contact: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n\nHow can I help you find your dream home today? 😊`;
   }
 
   if (lowerMessage.includes("process") || lowerMessage.includes("how to buy") || lowerMessage.includes("procedure")) {

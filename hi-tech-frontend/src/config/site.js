@@ -7,8 +7,8 @@ export const SITE = {
   phoneDisplay: "+91-123456 7899",
   phoneHref: "tel:+911234567899",
   whatsappHref:
-    "https://wa.me/911234567899?text=Hi%2C%20I%20found%20you%20on%20Brothers%20Estate%20and%20would%20like%20to%20enquire%20about%20a%20property.",
-  email: "info@brothersestate.com",
+    "https://wa.me/911234567899?text=Hi%2C%20I%20found%20you%20on%20Brothers%20RealEstate%20and%20would%20like%20to%20enquire%20about%20a%20property.",
+  email: "info@brothersrealestate.com",
   address: "1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009",
   servingSince: "Serving from last 15 years",
 };

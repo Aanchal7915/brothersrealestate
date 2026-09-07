@@ -107,7 +107,7 @@ const AdminLogin = ({ setCurrentPage }) => {
                 className="h-40 w-auto object-contain mb-6 drop-shadow-[0_0_20px_rgba(193,162,101,0.3)] transition-transform duration-500 hover:scale-105"
               />
               <h1 className="text-3xl tracking-[0.25em] font-serif text-white mb-2 uppercase drop-shadow-md">
-                Brothers <span className="text-gold">Estate</span>
+                Brothers <span className="text-gold">RealEstate</span>
               </h1>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-[1px] w-8 bg-gold/50"></div>

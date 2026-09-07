@@ -384,7 +384,7 @@ const PropertyDetails = ({ setCurrentPage }) => {
                     <Mail size={18} className="text-matte" />
                   </div>
                   <span className="text-gray-700 font-semibold">
-                    info@brothersestate.com
+                    info@brothersrealestate.com
                   </span>
                 </div>
               </div>

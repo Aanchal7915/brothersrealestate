@@ -96,7 +96,7 @@ const ChatBot = () => {
       input.includes("lakh") ||
       input.includes("crore")
     ) {
-      return "Our properties range from affordable to premium segments. For specific pricing and budget options, please:\n\n📱 Call: +91-123456 7899\n📧 Email: info@brothersestate.com\n🌐 Visit our Listings page\n\nOur team will help you find properties within your budget!";
+      return "Our properties range from affordable to premium segments. For specific pricing and budget options, please:\n\n📱 Call: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n🌐 Visit our Listings page\n\nOur team will help you find properties within your budget!";
     }
 
     // Location queries
@@ -116,7 +116,7 @@ const ChatBot = () => {
       input.includes("phone") ||
       input.includes("email")
     ) {
-      return "📞 Contact Brothers Realestate:\n\n• Phone: +91-123456 7899\n• Email: info@brothersestate.com\n• Address: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nYou can also fill out the contact form on our Contact page, and we'll reach out to you shortly!";
+      return "📞 Contact Brothers Realestate:\n\n• Phone: +91-123456 7899\n• Email: info@brothersrealestate.com\n• Address: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nYou can also fill out the contact form on our Contact page, and we'll reach out to you shortly!";
     }
 
     // Amenities
@@ -136,7 +136,7 @@ const ChatBot = () => {
       input.includes("viewing") ||
       input.includes("see property")
     ) {
-      return "I'd be happy to help you schedule a property visit! 🏠\n\nPlease contact us to arrange a viewing:\n📱 Call: +91-123456 7899\n📧 Email: info@brothersestate.com\n\nOr fill out the enquiry form on our Contact page, and our team will reach out to schedule a convenient time for you!";
+      return "I'd be happy to help you schedule a property visit! 🏠\n\nPlease contact us to arrange a viewing:\n📱 Call: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n\nOr fill out the enquiry form on our Contact page, and our team will reach out to schedule a convenient time for you!";
     }
 
     // About company
@@ -163,7 +163,7 @@ const ChatBot = () => {
     }
 
     // Default fallback
-    return "I'm here to help! For detailed information about our properties, pricing, and availability, please:\n\n📱 Call us: +91-123456 7899\n📧 Email: info@brothersestate.com\n🌐 Visit our Listings page\n\nOur team is ready to assist you with all your property needs!";
+    return "I'm here to help! For detailed information about our properties, pricing, and availability, please:\n\n📱 Call us: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n🌐 Visit our Listings page\n\nOur team is ready to assist you with all your property needs!";
   };
 
   const handleKeyPress = (e) => {
