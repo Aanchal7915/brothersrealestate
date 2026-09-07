@@ -328,7 +328,6 @@ const Home = ({ setCurrentPage, setSelectedProperty, setSelectedCollectionKey })
 
       {/* FeaturedShowcase removed as per user request */}
 
-      {/* Curated Collections — commented out as per user request.
       <CollectionStrip
         eyebrow="Curated For You"
         title="Curated Collections"
@@ -338,7 +337,6 @@ const Home = ({ setCurrentPage, setSelectedProperty, setSelectedCollectionKey })
         emptyText="No collections available at the moment."
         onViewAll={() => goTo("listings")}
       />
-      */}
 
       {/* Featured Listings — 3x2 grid with the trust strip.
           Keeps the bespoke Featured Listing brochure, unlike every other section. */}
