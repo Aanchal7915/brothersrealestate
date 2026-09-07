@@ -1,0 +1,6 @@
+node_modules/
+.env
+.env.*
+dist/
+MSB.exe
+hi-tech-frontend/public/MSB.exe

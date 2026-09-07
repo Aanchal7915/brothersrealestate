@@ -1,0 +1,635 @@
+/* ============================================
+   Brothers Realestate - Global Styles (index.css)
+   ============================================ */
+
+/* Tailwind CSS Directives */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts Import */
+
+
+/* CSS Custom Properties - Brand Colors */
+:root {
+  /* Brand Colors */
+  --color-primary-red: #dc2626;
+  --color-primary-blue: #2563eb;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  /* Shades - Red */
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+  --color-red-800: #991b1b;
+  
+  /* Shades - Blue */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  
+  /* Neutral Colors */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1f2937;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+}
+
+/* Base Styles & Resets */
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply font-sans text-gray-900 bg-white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg;
+  }
+  
+  /* Links */
+  a {
+    @apply transition-colors duration-300;
+  }
+  
+  /* Images */
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  /* Buttons Reset */
+  button {
+    @apply cursor-pointer;
+  }
+  
+  /* Selection */
+  ::selection {
+    @apply bg-blue-600 text-white;
+  }
+  
+  ::-moz-selection {
+    @apply bg-blue-600 text-white;
+  }
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+  transition: background-color var(--transition-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-400) var(--color-gray-100);
+}
+
+/* Focus States for Accessibility */
+@layer base {
+  *:focus {
+    @apply outline-none;
+  }
+  
+  *:focus-visible {
+    @apply ring-2 ring-blue-600 ring-offset-2 outline-none;
+  }
+  
+  /* Remove focus outline for mouse users */
+  *:focus:not(:focus-visible) {
+    @apply ring-0 ring-offset-0;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Line Clamp Utilities */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-red));
+  }
+  
+  /* Gradient Backgrounds */
+  .gradient-bg-primary {
+    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-primary-red) 100%);
+  }
+  
+  .gradient-bg-secondary {
+    background: linear-gradient(135deg, var(--color-blue-600) 0%, var(--color-blue-800) 100%);
+  }
+  
+  .gradient-bg-accent {
+    background: linear-gradient(135deg, var(--color-red-600) 0%, var(--color-red-800) 100%);
+  }
+  
+  /* Glassmorphism Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Container Utilities */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all var(--transition-base);
+  }
+  
+  .transition-fast {
+    transition: all var(--transition-fast);
+  }
+  
+  .transition-slow {
+    transition: all var(--transition-slow);
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+}
+
+/* Component Layer - Reusable Patterns */
+@layer components {
+  /* Card Base */
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition-shadow duration-300;
+  }
+  
+  .card:hover {
+    @apply shadow-xl;
+  }
+  
+  /* Button Base Styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600;
+  }
+  
+  .btn-secondary {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-600;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white focus:ring-blue-600;
+  }
+  
+  /* Input Base Styles */
+  .input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300;
+  }
+  
+  .input:focus {
+    @apply shadow-lg;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-blue {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .badge-red {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .badge-green {
+    @apply bg-green-100 text-green-800;
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px;
+  }
+  
+  .btn {
+    @apply border-2;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    @apply text-black bg-white;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  .page-break {
+    page-break-after: always;
+  }
+}
+
+/* RTL Support Preparation */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .ltr-content {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Responsive font sizing for mobile: reduce base font size and enable smoother scaling */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px; /* slightly smaller on very small screens */
+  }
+  /* Make sure headings don't overflow on tiny screens */
+  h1 { font-size: calc(1.6rem + 1.6vw); }
+  h2 { font-size: calc(1.25rem + 1.2vw); }
+}
+
+@media (max-width: 360px) {
+  html { font-size: 13px; }
+}
+
+/* Hide the page's own scrollbar on every device. Scrolling (wheel, touch,
+   keyboard, scrollIntoView) is untouched — only the bar is hidden. Scoped to
+   the document so inner scrollers, like the chatbot's message list, keep
+   their own styled bar. */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Reusable on any inner scrollable block (e.g. a capped-height bio) that
+   should scroll without showing a scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Phones showed a strip of empty page to the right of every section, with a
+   horizontal scroll to match. Two causes, both fixed here:
+   1. Reveal's "left"/"right" entrance slides the element 32px sideways before
+      it animates in — off-screen on a narrow viewport.
+   2. The decorative blur circles are deliberately hung outside their section
+      (-right-16, -right-24 …), which no ancestor was clipping.
+   `clip` rather than `hidden` so the page does not become a scroll container
+   and the sticky navbar / back bar keep working. */
+@media (max-width: 1023px) {
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  .reveal-anim {
+    --tw-translate-x: 0px !important;
+  }
+}
+
+/* Floating action buttons (WhatsApp + chatbot).
+   The two used to sit at different sizes and different right offsets, so on a
+   phone they read as a crooked, oversized pair crowding the content. These vars
+   are only defined below the `sm` breakpoint — desktop keeps its own sizes. */
+@media (max-width: 639px) {
+  :root {
+    --fab-size: 44px;
+    --fab-right: 14px;
+    /* Lifted clear of the fixed mobile Call/WhatsApp/Enquire bar (~56px) plus
+       its safe-area inset, so the floating bubbles don't sit on top of it. */
+    --fab-bottom: calc(70px + env(safe-area-inset-bottom));
+    /* chatbot bottom + its size + a gap that survives the float animation */
+    --fab-stack-bottom: calc(130px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Floating WhatsApp quick style fallback if component inline styles aren't applied */
+.floating-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gentle floating animation for the WhatsApp button */
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.floating-whatsapp {
+  animation: floaty 3.6s ease-in-out infinite;
+}
+
+/* Compact listings typography adjustments */
+.listings-compact {
+  font-size: 0.95rem;
+}
+.listings-compact h1 { font-size: 2.25rem; }
+.listings-compact h2 { font-size: 1.25rem; }
+.listings-compact .text-lg { font-size: 0.95rem; }
+
+@media (max-width: 768px) {
+  .listings-compact { font-size: 0.95rem; }
+  .listings-compact h1 { font-size: 1.6rem; }
+  .listings-compact h2 { font-size: 1.1rem; }
+}
+
+/* ============================================
+   Homepage motion — entrance, float, parallax
+   Transform/opacity only so everything stays on
+   the compositor and never triggers layout.
+   ============================================ */
+
+@keyframes ce-rise {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes ce-zoom-in {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ce-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -10px, 0); }
+}
+
+/* Hero children opt in with .ce-rise + an inline --d delay.
+   `backwards` keeps them hidden during the delay instead of flashing. */
+.ce-rise {
+  opacity: 0;
+  animation: ce-rise 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.ce-zoom-in {
+  opacity: 0;
+  animation: ce-zoom-in 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.ce-float {
+  animation: ce-float 6s ease-in-out infinite;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Nav underline that grows from the centre on hover */
+.ce-navlink::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: #C1A265;
+  transition: left 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
+              right 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.ce-navlink:hover::after,
+.ce-navlink:focus-visible::after {
+  left: 12px;
+  right: 12px;
+}
+
+/* Mobile drawer open/close */
+@keyframes ce-drawer-in {
+  from { opacity: 0; transform: translate3d(0, -10px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.ce-drawer {
+  animation: ce-drawer-in 0.26s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform-origin: top center;
+}
+.ce-drawer-item {
+  opacity: 0;
+  animation: ce-rise 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Users who ask for less motion get none of it. */
+@media (prefers-reduced-motion: reduce) {
+  .ce-rise,
+  .ce-zoom-in,
+  .ce-float,
+  .ce-drawer,
+  .ce-drawer-item,
+  .floating-whatsapp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .ce-navlink::after { transition: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Modal / backdrop entrance */
+@keyframes ce-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes ce-modal-in {
+  from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.97); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+.ce-backdrop-in { animation: ce-backdrop-in 0.22s ease-out both; }
+.ce-modal-in {
+  animation: ce-modal-in 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ce-backdrop-in, .ce-modal-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
