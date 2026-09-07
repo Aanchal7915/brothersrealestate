@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
         await sendEmail({
           to: email,
           toName: name,
-          subject: "We've received your enquiry — Brothers Realestate",
+          subject: "We've received your enquiry — Brothers Real Estate",
           html: getEnquiryConfirmationEmailTemplate(enquiryForEmail),
         });
       } catch (emailError) {

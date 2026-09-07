@@ -5,7 +5,7 @@ import { Send, User, Phone, MessageSquare, X } from "lucide-react";
  * Appears once, 60s after load, and hands the enquiry off to WhatsApp.
  * Styled to match the site's contact form.
  */
-export default function TimedWhatsAppPopup({ phone = "+911234567899" }) {
+export default function TimedWhatsAppPopup({ phone = "+91000000" }) {
   const [visible, setVisible] = useState(false);
   const nameRef = useRef(null);
   const phoneRef = useRef(null);

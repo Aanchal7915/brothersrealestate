@@ -20,7 +20,7 @@ interface EnquiryLike {
 }
 
 // Port of utils/emailTemplate.js with rebrand text applied per plan Section 3:
-// footer "Hi-Tech Properties" -> "Brothers Realestate"; address already matches
+// footer "Hi-Tech Properties" -> "Brothers Real Estate"; address already matches
 // the standardized Gurugram address.
 export function getEnquiryEmailTemplate(enquiry: EnquiryLike): string {
   const { name, email, phone, message, specialEnquiry, project, propertyId, createdAt } = enquiry;
@@ -119,7 +119,7 @@ export function getEnquiryEmailTemplate(enquiry: EnquiryLike): string {
                 </div>
             </div>
             <div class="footer">
-                <p>&copy; ${new Date().getFullYear()} Brothers Realestate. All rights reserved.</p>
+                <p>&copy; ${new Date().getFullYear()} Brothers Real Estate. All rights reserved.</p>
                 <p>Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram</p>
             </div>
         </div>
@@ -192,11 +192,11 @@ export function getEnquiryConfirmationEmailTemplate(enquiry: EnquiryLike): strin
 
                 <div class="next-steps">
                     <p style="font-size: 13.5px; color: #666; margin: 0 0 4px;">Need us sooner? Call or WhatsApp:</p>
-                    <a class="cta" href="tel:+911234567899">+91-123456 7899</a>
+                    <a class="cta" href="tel:+91000000">+91 000000</a>
                 </div>
             </div>
             <div class="footer">
-                <p>&copy; ${new Date().getFullYear()} Brothers Realestate. All rights reserved.</p>
+                <p>&copy; ${new Date().getFullYear()} Brothers Real Estate. All rights reserved.</p>
                 <p>Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram</p>
                 <p style="margin-top: 8px; color: #bbb;">This is an automated confirmation — no need to reply to this email.</p>
             </div>
@@ -259,7 +259,7 @@ export function getAdminLockedEmailTemplate({
                 </div>
                 <h1 class="title">Your admin access is temporarily locked</h1>
                 <p class="lead">
-                    Hi ${escapeHtml(adminName)}, we locked the Brothers Realestate admin panel for your account after
+                    Hi ${escapeHtml(adminName)}, we locked the Brothers Real Estate admin panel for your account after
                     ${attempts} incorrect ${escapeHtml(reason)} attempts in a row.
                 </p>
 
@@ -285,7 +285,7 @@ export function getAdminLockedEmailTemplate({
                 </div>
             </div>
             <div class="footer">
-                <p>&copy; ${new Date().getFullYear()} Brothers Realestate. All rights reserved.</p>
+                <p>&copy; ${new Date().getFullYear()} Brothers Real Estate. All rights reserved.</p>
                 <p>Tower B, 3rd Floor, Unitech Cyber Park, Sector 39, Gurugram</p>
             </div>
         </div>

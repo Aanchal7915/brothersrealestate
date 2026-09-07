@@ -15,8 +15,8 @@ const FIELD_GROUPS = [
   {
     title: "Contact",
     fields: [
-      { key: "phone", label: "Phone Number", placeholder: "1234567899", digitsOnly: true },
-      { key: "whatsapp", label: "WhatsApp Number", placeholder: "1234567899", digitsOnly: true },
+      { key: "phone", label: "Phone Number", placeholder: "000000", digitsOnly: true },
+      { key: "whatsapp", label: "WhatsApp Number", placeholder: "000000", digitsOnly: true },
       { key: "email", label: "Email Address", placeholder: "info@brothersrealestate.com" },
       { key: "address", label: "Office Address", placeholder: "Full office address" },
     ],

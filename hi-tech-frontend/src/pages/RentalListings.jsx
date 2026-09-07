@@ -554,7 +554,7 @@ const RentalListings = ({ setCurrentPage, setSelectedProperty }) => {
         <Reveal variant="up">
           <div className="rounded-xl bg-gold-pale/60 px-6 py-10 sm:px-10">
             <p className="text-center text-[10.5px] font-bold uppercase tracking-[0.2em] text-gold-dark">
-              Why Rent With Brothers Realestate?
+              Why Rent With Brothers Real Estate?
             </p>
             <h2 className="mt-3 text-center font-serif text-[20px] font-semibold text-matte sm:text-[28px]">
               Better Rentals. <span className="text-gold-dark">Better Living.</span>

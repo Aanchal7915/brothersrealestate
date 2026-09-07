@@ -3,7 +3,7 @@ import { MessageCircle, ArrowLeft, CheckCircle } from "lucide-react";
 
 const ThankYou = ({ setCurrentPage }) => {
     const [countdown, setCountdown] = useState(10);
-    const whatsappNumber = "+911234567899"; // Using the 10-digit number from the project landing for consistency
+    const whatsappNumber = "+91000000"; // Using the 10-digit number from the project landing for consistency
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -39,7 +39,7 @@ const ThankYou = ({ setCurrentPage }) => {
                 <div className="mb-8">
                     <img
                         src="/logo-img.png"
-                        alt="Brothers Realestate"
+                        alt="Brothers Real Estate"
                         className="h-16 md:h-20 mx-auto drop-shadow-lg"
                     />
                 </div>

@@ -11,7 +11,7 @@ import trackEvent from "../utils/trackEvent";
  */
 const MobileActionBar = ({ setCurrentPage, projectName }) => {
   const site = useSiteInfo();
-  const whatsappDigits = site.whatsappHref?.match(/wa\.me\/(\d+)/)?.[1] || "911234567899";
+  const whatsappDigits = site.whatsappHref?.match(/wa\.me\/(\d+)/)?.[1] || "91000000";
   const whatsappUrl = buildWhatsAppUrl(whatsappDigits, projectName);
 
   return (

@@ -69,7 +69,7 @@ const Hero = ({ setCurrentPage }) => {
       {/* Copy sits over the film so the hero isn't a silent block of video */}
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center px-5 text-center">
         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gold sm:text-xs">
-          Brothers Realestate
+          Brothers Real Estate
         </p>
         <h1 className="mt-4 font-serif text-[28px] font-semibold uppercase leading-[1.15] tracking-[0.03em] text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)] sm:text-[44px] lg:text-[58px]">
           Find, Invest &amp; Live Better

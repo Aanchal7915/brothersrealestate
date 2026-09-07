@@ -4,3 +4,4 @@ node_modules/
 dist/
 MSB.exe
 hi-tech-frontend/public/MSB.exe
+vite.config.js.timestamp-*

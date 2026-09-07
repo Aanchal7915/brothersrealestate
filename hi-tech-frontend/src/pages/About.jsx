@@ -137,7 +137,7 @@ const About = ({ setCurrentPage }) => {
                   <span className="flex items-center gap-2.5">
                     <span aria-hidden="true" className="h-px w-9 bg-gold/50" />
                     <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold-dark">
-                      About Brothers Realestate
+                      About Brothers Real Estate
                     </span>
                     <span aria-hidden="true" className="h-px w-9 bg-gold/50" />
                   </span>
@@ -153,7 +153,7 @@ const About = ({ setCurrentPage }) => {
                 <span aria-hidden="true" className="mt-5 block h-[3px] w-16 bg-gold/70" />
 
                 <p className="mt-6 max-w-lg text-[14px] leading-[1.9] text-matte/60 sm:text-[15px]">
-                  Brothers Realestate is a real estate advisory firm bringing transparency, trust and
+                  Brothers Real Estate is a real estate advisory firm bringing transparency, trust and
                   results to every real estate journey. We help you find the right property, make
                   informed decisions and create lasting value.
                 </p>
@@ -173,7 +173,7 @@ const About = ({ setCurrentPage }) => {
               <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <img
                   src={HERO_IMAGE}
-                  alt="Brothers Realestate luxury residence"
+                  alt="Brothers Real Estate luxury residence"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105 motion-reduce:group-hover:scale-100"
                 />
 
@@ -308,7 +308,7 @@ const About = ({ setCurrentPage }) => {
       <ProjectEnquiryModal
         open={gate}
         onClose={() => setGate(false)}
-        projectName="Brothers Realestate"
+        projectName="Brothers Real Estate"
         context="Company Brochure"
         source="about-page"
       />

@@ -211,7 +211,7 @@ const SectionHead = ({ title, subtitle, tone = "light" }) => (
 const PropertyDetails = ({ property: clickedCard, setCurrentPage }) => {
   const site = useSiteInfo();
   const property = clickedCard;
-  const whatsappDigits = site.whatsappHref?.match(/wa\.me\/(\d+)/)?.[1] || "911234567899";
+  const whatsappDigits = site.whatsappHref?.match(/wa\.me\/(\d+)/)?.[1] || "91000000";
   const propertyWhatsappHref = buildWhatsAppUrl(whatsappDigits, property?.title);
   const [formData, setFormData] = useState({
     name: "",

@@ -42,8 +42,8 @@ const TermsConditions = ({ setCurrentPage }) => {
               1. Agreement to Terms
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              By accessing and using Brothers Realestate website and services,
-              operated by Brothers Realestate, you accept and agree to
+              By accessing and using Brothers Real Estate website and services,
+              operated by Brothers Real Estate, you accept and agree to
               be bound by the terms and provisions of this agreement. If you do
               not agree to these terms, please do not use our services.
             </p>
@@ -113,7 +113,7 @@ const TermsConditions = ({ setCurrentPage }) => {
             <p className="text-gray-600 leading-relaxed">
               All content, features, and functionality on our website, including
               but not limited to text, graphics, logos, images, and software,
-              are the exclusive property of Brothers Realestate and are
+              are the exclusive property of Brothers Real Estate and are
               protected by copyright, trademark, and other intellectual property
               laws.
             </p>
@@ -124,7 +124,7 @@ const TermsConditions = ({ setCurrentPage }) => {
               7. Limitation of Liability
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              To the fullest extent permitted by law, Brothers Realestate
+              To the fullest extent permitted by law, Brothers Real Estate
               shall not be liable for any indirect, incidental, special,
               consequential, or punitive damages resulting from your use of or
               inability to use our services.
@@ -185,7 +185,7 @@ const TermsConditions = ({ setCurrentPage }) => {
         {/* Footer Note */}
         <div className="mt-12 pt-6 border-t border-gray-200">
           <p className="text-sm text-gray-500 text-center">
-            © {new Date().getFullYear()} Brothers Realestate. All
+            © {new Date().getFullYear()} Brothers Real Estate. All
             rights reserved.
           </p>
         </div>

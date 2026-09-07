@@ -90,16 +90,16 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             <button
               onClick={() => handleNavigate({ page: "home" })}
               className="group flex shrink-0 items-center gap-2.5 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-              aria-label="Brothers Realestate — home"
+              aria-label="Brothers Real Estate — home"
             >
               <img
                 src={logo}
-                alt="Brothers Realestate"
+                alt="Brothers Real Estate"
                 className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 motion-reduce:group-hover:scale-100 lg:h-16"
               />
               <span className="block text-left leading-tight">
                 <span className="block whitespace-nowrap font-serif text-[15px] font-semibold uppercase tracking-[0.1em] text-white sm:text-base sm:tracking-[0.14em]">
-                  Brothers <span className="text-gold">RealEstate</span>
+                  Brothers <span className="text-gold">Real Estate</span>
                 </span>
                 <span className="hidden whitespace-nowrap text-[9px] font-semibold uppercase tracking-[0.18em] text-white/50 lg:block">
                   {SITE.tagline}
@@ -171,7 +171,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               {/* Mobile: quick call + menu */}
               <a
                 href={site.phoneHref}
-                aria-label="Call Brothers Realestate"
+                aria-label="Call Brothers Real Estate"
                 className="inline-flex h-10 w-10 items-center justify-center border border-gold/40 text-gold sm:hidden"
               >
                 <Phone size={17} />

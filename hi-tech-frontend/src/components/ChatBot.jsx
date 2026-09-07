@@ -8,7 +8,7 @@ import "../styles/ChatBot.css";
  * into an unreadable blob at 44–60px, so the CSS zooms into the character.
  */
 const BotMark = ({ className = "" }) => (
-  <span className={`chatbot-mark ${className}`} role="img" aria-label="Brothers Realestate assistant" />
+  <span className={`chatbot-mark ${className}`} role="img" aria-label="Brothers Real Estate assistant" />
 );
 
 const ChatBot = () => {
@@ -16,7 +16,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       type: "bot",
-      text: "Hello! 👋 I'm your Brothers Realestate assistant. I can help you:\n\n🏠 Find properties by BHK, budget, or location\n💰 Check pricing and availability\n📍 Get area information\n📞 Connect with our team\n\nWhat would you like to know?",
+      text: "Hello! 👋 I'm your Brothers Real Estate assistant. I can help you:\n\n🏠 Find properties by BHK, budget, or location\n💰 Check pricing and availability\n📍 Get area information\n📞 Connect with our team\n\nWhat would you like to know?",
       timestamp: new Date(),
     },
   ]);
@@ -82,10 +82,10 @@ const ChatBot = () => {
   const getFallbackResponse = (input) => {
     // Property search queries
     if (input.includes("2 bhk") || input.includes("2bhk")) {
-      return "I can help you find 2 BHK properties! Currently, we have several options available. Please visit our Listings page or contact us at +91-123456 7899 for detailed information about available 2 BHK properties.";
+      return "I can help you find 2 BHK properties! Currently, we have several options available. Please visit our Listings page or contact us at +91 000000 for detailed information about available 2 BHK properties.";
     }
     if (input.includes("3 bhk") || input.includes("3bhk")) {
-      return "We have excellent 3 BHK properties! Check out our Listings page or call us at +91-123456 7899 to discuss your requirements.";
+      return "We have excellent 3 BHK properties! Check out our Listings page or call us at +91 000000 to discuss your requirements.";
     }
 
     // Budget queries
@@ -96,7 +96,7 @@ const ChatBot = () => {
       input.includes("lakh") ||
       input.includes("crore")
     ) {
-      return "Our properties range from affordable to premium segments. For specific pricing and budget options, please:\n\n📱 Call: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n🌐 Visit our Listings page\n\nOur team will help you find properties within your budget!";
+      return "Our properties range from affordable to premium segments. For specific pricing and budget options, please:\n\n📱 Call: +91 000000\n📧 Email: info@brothersrealestate.com\n🌐 Visit our Listings page\n\nOur team will help you find properties within your budget!";
     }
 
     // Location queries
@@ -106,7 +106,7 @@ const ChatBot = () => {
       input.includes("where") ||
       input.includes("city")
     ) {
-      return "We have properties across prime locations! To explore properties in specific areas, please:\n\n✅ Check our Listings page\n✅ Contact us: +91-123456 7899\n✅ Visit our office\n\nOur team can show you properties in your preferred locations.";
+      return "We have properties across prime locations! To explore properties in specific areas, please:\n\n✅ Check our Listings page\n✅ Contact us: +91 000000\n✅ Visit our office\n\nOur team can show you properties in your preferred locations.";
     }
 
     // Contact queries
@@ -116,7 +116,7 @@ const ChatBot = () => {
       input.includes("phone") ||
       input.includes("email")
     ) {
-      return "📞 Contact Brothers Realestate:\n\n• Phone: +91-123456 7899\n• Email: info@brothersrealestate.com\n• Address: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nYou can also fill out the contact form on our Contact page, and we'll reach out to you shortly!";
+      return "📞 Contact Brothers Real Estate:\n\n• Phone: +91 000000\n• Email: info@brothersrealestate.com\n• Address: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nYou can also fill out the contact form on our Contact page, and we'll reach out to you shortly!";
     }
 
     // Amenities
@@ -136,7 +136,7 @@ const ChatBot = () => {
       input.includes("viewing") ||
       input.includes("see property")
     ) {
-      return "I'd be happy to help you schedule a property visit! 🏠\n\nPlease contact us to arrange a viewing:\n📱 Call: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n\nOr fill out the enquiry form on our Contact page, and our team will reach out to schedule a convenient time for you!";
+      return "I'd be happy to help you schedule a property visit! 🏠\n\nPlease contact us to arrange a viewing:\n📱 Call: +91 000000\n📧 Email: info@brothersrealestate.com\n\nOr fill out the enquiry form on our Contact page, and our team will reach out to schedule a convenient time for you!";
     }
 
     // About company
@@ -145,7 +145,7 @@ const ChatBot = () => {
       input.includes("who are you") ||
       input.includes("company")
     ) {
-      return "Brothers Realestate is your trusted real estate partner! 🏡\n\nWe specialize in:\n✅ Premium residential properties\n✅ Expert property consultation\n✅ Transparent dealings\n✅ Customer satisfaction\n\nVisit our About page to learn more about us, or contact us at +91-123456 7899!";
+      return "Brothers Real Estate is your trusted real estate partner! 🏡\n\nWe specialize in:\n✅ Premium residential properties\n✅ Expert property consultation\n✅ Transparent dealings\n✅ Customer satisfaction\n\nVisit our About page to learn more about us, or contact us at +91 000000!";
     }
 
     // Greetings
@@ -163,7 +163,7 @@ const ChatBot = () => {
     }
 
     // Default fallback
-    return "I'm here to help! For detailed information about our properties, pricing, and availability, please:\n\n📱 Call us: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n🌐 Visit our Listings page\n\nOur team is ready to assist you with all your property needs!";
+    return "I'm here to help! For detailed information about our properties, pricing, and availability, please:\n\n📱 Call us: +91 000000\n📧 Email: info@brothersrealestate.com\n🌐 Visit our Listings page\n\nOur team is ready to assist you with all your property needs!";
   };
 
   const handleKeyPress = (e) => {
@@ -179,7 +179,7 @@ const ChatBot = () => {
     "What amenities are available?",
     "Schedule a property visit",
     "Contact information",
-    "About Brothers Realestate",
+    "About Brothers Real Estate",
   ];
 
   const handleQuickAction = (action) => {
@@ -205,7 +205,7 @@ const ChatBot = () => {
             <div className="flex items-center gap-3">
               <BotMark className="chatbot-mark-sm" />
               <div>
-                <h3 className="chatbot-title">Brothers Realestate Assistant</h3>
+                <h3 className="chatbot-title">Brothers Real Estate Assistant</h3>
                 <p className="chatbot-subtitle">Online • Ready to help</p>
               </div>
             </div>

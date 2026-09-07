@@ -66,7 +66,7 @@ const TESTIMONIALS = [
     name: "Mr. Sanjay Khanna",
     role: "Senior Vice President",
     quote:
-      "The level of professionalism at Brothers Realestate is top-notch. They handled the entire documentation and legal process seamlessly, making it a stress-free experience.",
+      "The level of professionalism at Brothers Real Estate is top-notch. They handled the entire documentation and legal process seamlessly, making it a stress-free experience.",
   },
   {
     name: "Ms. Priya Sharma",

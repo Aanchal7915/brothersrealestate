@@ -275,7 +275,7 @@ const LuxContact = ({
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Brothers Realestate office location"
+                  title="Brothers Real Estate office location"
                 />
               </div>
 

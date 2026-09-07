@@ -1,13 +1,13 @@
-// Single source of truth for Brothers Realestate contact details and navigation.
+// Single source of truth for Brothers Real Estate contact details and navigation.
 // Values mirror what the live site already publishes — update here, not per-component.
 
 export const SITE = {
-  name: "Brothers Realestate",
+  name: "Brothers Real Estate",
   tagline: "Find • Invest • Live Better",
-  phoneDisplay: "+91-123456 7899",
-  phoneHref: "tel:+911234567899",
+  phoneDisplay: "+91 000000",
+  phoneHref: "tel:+91000000",
   whatsappHref:
-    "https://wa.me/911234567899?text=Hi%2C%20I%20found%20you%20on%20Brothers%20RealEstate%20and%20would%20like%20to%20enquire%20about%20a%20property.",
+    "https://wa.me/91000000?text=Hi%2C%20I%20found%20you%20on%20Brothers%20Real%20Estate%20and%20would%20like%20to%20enquire%20about%20a%20property.",
   email: "info@brothersrealestate.com",
   address: "1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009",
   servingSince: "Serving from last 15 years",

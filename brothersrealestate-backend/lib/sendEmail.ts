@@ -5,11 +5,11 @@ interface SendEmailOptions {
   html: string;
 }
 
-/** "BrothersRealEstate <aanchal2115@gmail.com>" -> { name, email } */
+/** "Brothers Real Estate <aanchal2115@gmail.com>" -> { name, email } */
 function parseFromHeader(raw: string): { name: string; email: string } {
   const match = raw.match(/^\s*(.*?)\s*<([^<>]+)>\s*$/);
-  if (match) return { name: match[1] || "Brothers Realestate", email: match[2] };
-  return { name: "Brothers Realestate", email: raw.trim() };
+  if (match) return { name: match[1] || "Brothers Real Estate", email: match[2] };
+  return { name: "Brothers Real Estate", email: raw.trim() };
 }
 
 // Every transactional email in this app (enquiry notifications, enquiry
@@ -30,7 +30,7 @@ export async function sendEmail(options: SendEmailOptions): Promise<boolean> {
     return false;
   }
 
-  const fromRaw = process.env.BREVO_FROM || process.env.FROM_EMAIL || "Brothers Realestate <no-reply@brothersrealestate.com>";
+  const fromRaw = process.env.BREVO_FROM || process.env.FROM_EMAIL || "Brothers Real Estate <no-reply@brothersrealestate.com>";
   const { name: fromName, email: fromEmail } = parseFromHeader(fromRaw);
 
   try {

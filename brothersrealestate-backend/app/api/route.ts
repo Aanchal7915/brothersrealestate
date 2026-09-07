@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 // Root route — mirrors the old server.js "/" payload, rebranded per plan
-// Section 3 ("Hi-Tech Homes API" -> "Brothers Realestate API").
+// Section 3 ("Hi-Tech Homes API" -> "Brothers Real Estate API").
 export async function GET() {
   return NextResponse.json({
     success: true,
-    message: "Brothers Realestate API",
+    message: "Brothers Real Estate API",
     version: "1.0.0",
     endpoints: {
       health: "/api/health",

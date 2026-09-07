@@ -23,7 +23,7 @@ const ProjectLanding = ({ setCurrentPage }) => {
   const footerPhoneRef = useRef(null);
   const footerSpecialEnquiryRef = useRef(null);
 
-  const whatsappNumber = "+911234567899";
+  const whatsappNumber = "+91000000";
 
   const handleHeroSubmit = async (e) => {
     e.preventDefault();
@@ -1336,7 +1336,7 @@ const ContactPopup = ({ isOpen, onClose, setCurrentPage }) => {
   const popupPhoneRef = useRef(null);
   const popupSpecialEnquiryRef = useRef(null);
 
-  const whatsappNumber = "+911234567899";
+  const whatsappNumber = "+91000000";
 
   const handlePopupSubmit = async (e) => {
     e.preventDefault();

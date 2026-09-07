@@ -20,7 +20,7 @@ const AboutSection = ({ setCurrentPage }) => (
         <Reveal>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
-              About Brothers Realestate
+              About Brothers Real Estate
             </p>
             <h2 className="mt-4 font-serif text-[22px] font-semibold uppercase leading-tight tracking-[0.03em] text-matte sm:text-4xl lg:text-[2.75rem]">
               Building Trust,{" "}
@@ -29,7 +29,7 @@ const AboutSection = ({ setCurrentPage }) => (
             <span className="mt-5 block h-px w-14 bg-gold" />
 
             <p className="mt-6 text-sm leading-[1.9] text-matte/60 sm:text-[15px]">
-              Brothers Realestate is a real estate consultancy committed to helping
+              Brothers Real Estate is a real estate consultancy committed to helping
               clients find residential and commercial properties that genuinely
               match their lifestyle, goals and budget — from first homes to
               long-term investments across Gurgaon and Delhi NCR.

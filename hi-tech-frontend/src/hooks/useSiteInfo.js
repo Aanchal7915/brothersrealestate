@@ -3,7 +3,7 @@ import { CompanySettingsContext } from "../context/CompanySettingsContext";
 import { SITE } from "../config/site";
 
 const WHATSAPP_TEXT =
-  "Hi, I found you on Brothers Realestate and would like to enquire about a property.";
+  "Hi, I found you on Brothers Real Estate and would like to enquire about a property.";
 
 /**
  * Builds a wa.me URL.

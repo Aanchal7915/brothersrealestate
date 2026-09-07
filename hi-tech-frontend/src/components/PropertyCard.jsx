@@ -373,10 +373,10 @@ const PropertyDetails = ({ setCurrentPage }) => {
                     <Phone size={18} className="text-matte" />
                   </div>
                   <span className="text-gray-700 font-semibold">
-                    +91-123456 7899
+                    +91 000000
                   </span>
                    <span className="text-gray-700 font-semibold">
-                    +91-123456 7899
+                    +91 000000
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-ivory transition-colors cursor-pointer group">

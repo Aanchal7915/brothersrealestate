@@ -55,7 +55,7 @@ const JoinTeam = ({ setCurrentPage }) => (
         <div className="group relative h-64 overflow-hidden sm:h-80 lg:h-full lg:min-h-[30rem]">
           <img
             src={IMAGE}
-            alt="Brothers Realestate workspace"
+            alt="Brothers Real Estate workspace"
             className="h-full w-full object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-105 motion-reduce:group-hover:scale-100"
           />
           <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-matte/70 via-matte/25 to-transparent" />
@@ -68,7 +68,7 @@ const JoinTeam = ({ setCurrentPage }) => (
               className="h-10 w-auto object-contain opacity-90 drop-shadow-lg"
             />
             <span className="font-serif text-sm font-semibold uppercase tracking-[0.22em] text-white drop-shadow">
-              Brothers Realestate
+              Brothers Real Estate
             </span>
           </span>
         </div>

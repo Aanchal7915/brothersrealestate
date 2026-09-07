@@ -137,7 +137,7 @@ const Contact = ({ setCurrentPage, showMap = true }) => {
           <div className="relative min-h-[240px] lg:min-h-[420px]">
             <img
               src={HERO_IMAGE}
-              alt="Brothers Realestate residence"
+              alt="Brothers Real Estate residence"
               className="absolute inset-0 h-full w-full object-cover"
             />
             <span
@@ -161,7 +161,7 @@ const Contact = ({ setCurrentPage, showMap = true }) => {
         <div className="mx-auto max-w-[84rem] px-4 sm:px-6 lg:px-8">
           <Reveal variant="up">
             <p className="text-center text-[11px] font-bold uppercase tracking-[0.22em] text-gold-dark">
-              Why Contact Brothers Realestate?
+              Why Contact Brothers Real Estate?
             </p>
             <span aria-hidden="true" className="mx-auto mt-2.5 block h-[3px] w-12 bg-gold" />
 

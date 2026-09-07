@@ -6,7 +6,7 @@ import trackEvent from "../utils/trackEvent";
 export default function FloatingWhatsApp({ projectName }) {
   const [open, setOpen] = useState(false);
   const site = useSiteInfo();
-  const whatsappDigits = site.whatsappHref?.match(/wa\.me\/(\d+)/)?.[1] || "911234567899";
+  const whatsappDigits = site.whatsappHref?.match(/wa\.me\/(\d+)/)?.[1] || "91000000";
   const url = buildWhatsAppUrl(whatsappDigits, projectName);
 
   return (

@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
         success: false,
         error: "Failed to process message",
         reply:
-          "I apologize, but I encountered an error. Please try again or contact our support team at +91-123456 7899.",
+          "I apologize, but I encountered an error. Please try again or contact our support team at +91 000000.",
       },
       { status: 500 }
     );
@@ -262,7 +262,7 @@ async function generateAIResponse(
     const messages: { role: string; content: string }[] = [
       {
         role: "system",
-        content: `You are an intelligent property assistant for Brothers Realestate real estate website. Your role is to:
+        content: `You are an intelligent property assistant for Brothers Real Estate real estate website. Your role is to:
 
 1. Answer user questions naturally and conversationally
 2. Help users find properties based on their specific requirements
@@ -271,8 +271,8 @@ async function generateAIResponse(
 5. Be friendly, helpful, and always respond directly to what the user asks
 
 Company Information:
-- Name: Brothers Realestate
-- Phone: +91-123456 7899
+- Name: Brothers Real Estate
+- Phone: +91 000000
 - Email: info@brothersrealestate.com
 - Location: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009
 - Specialization: Premium residential properties
@@ -337,7 +337,7 @@ NO PROPERTIES FOUND matching the user's query AND no suitable alternatives.
 
 IMPORTANT:
 - Politely apologize: "I'm sorry, we don't currently have properties matching your exact requirements."
-- Suggest: Call +91-123456 7899 to discuss requirements
+- Suggest: Call +91 000000 to discuss requirements
 - Offer to notify them when matching properties become available
 - Suggest they try: Different budget range, different BHK, different location
 - Offer to show them our latest properties
@@ -353,7 +353,7 @@ CONVERSATION STYLE:
 - When no match: be apologetic but helpful
 - Always end with a helpful follow-up question or offer
 - Keep responses concise but informative (2-4 sentences for most answers)
-- For contact queries, provide: Phone: +91-123456 7899, Email: info@brothersrealestate.com`,
+- For contact queries, provide: Phone: +91 000000, Email: info@brothersrealestate.com`,
       },
     ];
 
@@ -437,7 +437,7 @@ function generateFallbackResponse(
     lowerMessage.includes("call") ||
     lowerMessage.includes("dealer")
   ) {
-    return `📞 Contact Brothers Realestate:\n\n• Phone: +91-123456 7899\n• Email: info@brothersrealestate.com\n• Location: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nOur team is ready to assist you! You can also click on any property to contact the dealer directly. How else can I help you? 😊`;
+    return `📞 Contact Brothers Real Estate:\n\n• Phone: +91 000000\n• Email: info@brothersrealestate.com\n• Location: 1st floor alt.f MPD Tower, Sector 43, Gurugram, Haryana 122009\n\nOur team is ready to assist you! You can also click on any property to contact the dealer directly. How else can I help you? 😊`;
   }
 
   if (
@@ -458,11 +458,11 @@ function generateFallbackResponse(
   }
 
   if (lowerMessage.includes("about") || lowerMessage.includes("who are you") || lowerMessage.includes("company")) {
-    return `Brothers Realestate - Your trusted real estate partner! 🏡\n\nWe specialize in:\n✅ Premium residential properties\n✅ Expert property consultation\n✅ Transparent dealings\n✅ Customer satisfaction\n\n📞 Contact: +91-123456 7899\n📧 Email: info@brothersrealestate.com\n\nHow can I help you find your dream home today? 😊`;
+    return `Brothers Real Estate - Your trusted real estate partner! 🏡\n\nWe specialize in:\n✅ Premium residential properties\n✅ Expert property consultation\n✅ Transparent dealings\n✅ Customer satisfaction\n\n📞 Contact: +91 000000\n📧 Email: info@brothersrealestate.com\n\nHow can I help you find your dream home today? 😊`;
   }
 
   if (lowerMessage.includes("process") || lowerMessage.includes("how to buy") || lowerMessage.includes("procedure")) {
-    return `Our property buying process:\n\n1️⃣ Browse & shortlist properties\n2️⃣ Contact our dealer\n3️⃣ Schedule property visit\n4️⃣ Document verification\n5️⃣ Finalize the deal\n\nOur expert team guides you through each step! 📞 Call +91-123456 7899 for personalized assistance. What type of property interests you? 😊`;
+    return `Our property buying process:\n\n1️⃣ Browse & shortlist properties\n2️⃣ Contact our dealer\n3️⃣ Schedule property visit\n4️⃣ Document verification\n5️⃣ Finalize the deal\n\nOur expert team guides you through each step! 📞 Call +91 000000 for personalized assistance. What type of property interests you? 😊`;
   }
 
   if (
@@ -472,7 +472,7 @@ function generateFallbackResponse(
     lowerMessage.includes("property") ||
     lowerMessage.includes("flat")
   ) {
-    return `I apologize, but we don't currently have properties matching your specific requirements. 😔\n\nLet me help you find alternatives:\n• Adjust your budget range? 💰\n• Try different BHK? 🏠\n• Explore other locations? 📍\n• See our latest properties?\n\n📞 Call us at +91-123456 7899 and we'll find the perfect match for you! What would you prefer? 😊`;
+    return `I apologize, but we don't currently have properties matching your specific requirements. 😔\n\nLet me help you find alternatives:\n• Adjust your budget range? 💰\n• Try different BHK? 🏠\n• Explore other locations? 📍\n• See our latest properties?\n\n📞 Call us at +91 000000 and we'll find the perfect match for you! What would you prefer? 😊`;
   }
 
   if (
@@ -481,12 +481,12 @@ function generateFallbackResponse(
     lowerMessage.includes("hey") ||
     lowerMessage === "hi"
   ) {
-    return "Hello! 👋 Welcome to Brothers Realestate! I'm here to help you find your dream property. What are you looking for today? 🏠";
+    return "Hello! 👋 Welcome to Brothers Real Estate! I'm here to help you find your dream property. What are you looking for today? 🏠";
   }
 
   if (lowerMessage.includes("thank") || lowerMessage.includes("thanks")) {
     return "You're very welcome! 😊 If you have any more questions about properties, feel free to ask. Happy house hunting! 🏠✨";
   }
 
-  return `I'm here to help you find your perfect property! 🏠\n\nYou can ask me:\n• "Show me 2 BHK under 50 lakh"\n• "Properties in Mumbai"\n• "What amenities are available?"\n• "Contact information"\n• "Schedule a property visit"\n\n📞 Or call us: +91-123456 7899\n\nWhat can I help you with? 😊`;
+  return `I'm here to help you find your perfect property! 🏠\n\nYou can ask me:\n• "Show me 2 BHK under 50 lakh"\n• "Properties in Mumbai"\n• "What amenities are available?"\n• "Contact information"\n• "Schedule a property visit"\n\n📞 Or call us: +91 000000\n\nWhat can I help you with? 😊`;
 }

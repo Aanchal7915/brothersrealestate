@@ -157,7 +157,7 @@ const AuthModal = ({ isOpen, onClose, setCurrentPage }) => {
           <div className="mb-6 transition-transform duration-500 hover:scale-105">
             <img
               src={logo}
-              alt="Brothers Realestate Logo"
+              alt="Brothers Real Estate Logo"
               className="h-32 w-auto object-contain drop-shadow-lg"
             />
           </div>
@@ -165,7 +165,7 @@ const AuthModal = ({ isOpen, onClose, setCurrentPage }) => {
             className="text-4xl font-extrabold text-gray-900 text-center leading-snug"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            Brothers <span className="text-matte">Estate</span>
+            Brothers <span className="text-matte">Real Estate</span>
           </h1>
           <p
             className="text-gray-500 mt-4 text-center max-w-sm"
@@ -208,7 +208,7 @@ const AuthModal = ({ isOpen, onClose, setCurrentPage }) => {
               ? "Sign in to continue to your dashboard"
               : mode === "login"
               ? "Login to explore amazing properties"
-              : "Join Brothers Realestate to find your dream property"}
+              : "Join Brothers Real Estate to find your dream property"}
           </p>
 
           {error && (

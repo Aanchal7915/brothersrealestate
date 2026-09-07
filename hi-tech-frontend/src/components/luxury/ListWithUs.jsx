@@ -16,7 +16,7 @@ const Err = ({ children }) =>
   ) : null;
 
 /**
- * "List With Us" — for owners who want Brothers Realestate to market their property.
+ * "List With Us" — for owners who want Brothers Real Estate to market their property.
  * Submits through the existing /enquiries endpoint (no new backend surface),
  * tagged in the message so the admin can tell it apart from a buyer enquiry.
  */

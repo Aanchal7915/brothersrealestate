@@ -49,16 +49,16 @@ export default function Footer({ setCurrentPage }) {
             <button
               onClick={() => handleNavigate("home")}
               className="inline-flex items-center gap-3"
-              aria-label="Brothers Realestate — home"
+              aria-label="Brothers Real Estate — home"
             >
               <img
                 src={logo}
-                alt="Brothers Realestate"
+                alt="Brothers Real Estate"
                 className="h-16 sm:h-20 w-auto object-contain"
               />
               <span className="text-left leading-tight">
                 <span className="block font-serif text-base font-semibold uppercase tracking-[0.16em] text-white">
-                  Brothers <span className="text-gold">Estate</span>
+                  Brothers <span className="text-gold">Real Estate</span>
                 </span>
               </span>
             </button>
@@ -138,7 +138,7 @@ export default function Footer({ setCurrentPage }) {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Brothers Realestate office location"
+                title="Brothers Real Estate office location"
               />
             </div>
             <a

@@ -131,7 +131,7 @@ const FeaturedShowcase = ({
               <div className="flex flex-col justify-center gap-5 p-7 sm:p-10 lg:p-12">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-gold-dark">
-                    Brothers Realestate
+                    Brothers Real Estate
                   </p>
                   <h3 className="mt-3 font-serif text-3xl font-semibold uppercase leading-tight tracking-[0.03em] text-matte sm:text-4xl">
                     {selected.title}

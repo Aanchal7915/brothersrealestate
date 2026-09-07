@@ -7,7 +7,7 @@ const PrivacyPolicy = ({ setCurrentPage }) => {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-black mb-6">Privacy Policy</h1>
 
-        <p className="mb-6">At Brothers Realestate, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit or interact with our website.</p>
+        <p className="mb-6">At Brothers Real Estate, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit or interact with our website.</p>
 
         <ol className="list-decimal ml-6 space-y-4">
           <li>
@@ -39,7 +39,7 @@ const PrivacyPolicy = ({ setCurrentPage }) => {
 
           <li>
             <strong>Payment Security</strong>
-            <p className="mt-2">Any payments, if applicable, are processed through secure third-party payment gateways. Brothers Realestate does not store your banking or card details on its servers.</p>
+            <p className="mt-2">Any payments, if applicable, are processed through secure third-party payment gateways. Brothers Real Estate does not store your banking or card details on its servers.</p>
           </li>
 
           <li>
@@ -49,7 +49,7 @@ const PrivacyPolicy = ({ setCurrentPage }) => {
 
           <li>
             <strong>Policy Updates</strong>
-            <p className="mt-2">Brothers Realestate reserves the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon being posted on the website.</p>
+            <p className="mt-2">Brothers Real Estate reserves the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon being posted on the website.</p>
           </li>
 
           <li>
