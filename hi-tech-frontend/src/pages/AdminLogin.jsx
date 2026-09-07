@@ -1,69 +1,123 @@
-import { useState, useContext } from "react";
-import { Mail, Lock, Eye, EyeOff, AlertCircle, Home, ArrowRight } from "lucide-react";
+import { useState, useContext, useEffect, useCallback } from "react";
+import { Mail, Lock, Eye, EyeOff, AlertCircle, Home, ArrowRight, MapPin, CheckCircle2 } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
-import { UserAuthContext } from "../context/UserAuthContext";
 import logo from "../assets/logo1.png";
+
+// The server refuses an admin sign-in without coordinates, so gather them
+// before the form can be submitted rather than failing the request. Requires
+// a secure context — browsers disable the Geolocation API entirely over
+// plain HTTP, so on a non-HTTPS host this never resolves.
+const GEO_OPTIONS = { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 };
+
+const geoErrorMessage = (err) => {
+  if (!window.isSecureContext) {
+    return "Location needs a secure (HTTPS) connection. Open the admin panel over https:// and try again.";
+  }
+  switch (err?.code) {
+    case 1:
+      return "Location permission was blocked. Allow location for this site in your browser settings, then click Retry.";
+    case 2:
+      return "Your location could not be determined. Check that location services are switched on for your device.";
+    case 3:
+      return "Timed out while getting your location. Move somewhere with a better signal and click Retry.";
+    default:
+      return "Could not read your location. Enable location access and click Retry.";
+  }
+};
 
 const AdminLogin = ({ setCurrentPage }) => {
   const { login: adminLogin } = useContext(AuthContext);
-  const { login: userLogin } = useContext(UserAuthContext);
 
   const [formData, setFormData] = useState({ email: "", password: "", securityPasscode: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasscode, setShowPasscode] = useState(false);
+  const [coords, setCoords] = useState(null);
+  const [geoStatus, setGeoStatus] = useState("idle"); // idle | requesting | granted | denied
+  const [geoError, setGeoError] = useState("");
+
+  const requestLocation = useCallback(() => {
+    if (!navigator.geolocation) {
+      setGeoStatus("denied");
+      setGeoError("This browser does not support location access, which is required for admin sign-in.");
+      return;
+    }
+
+    setGeoStatus("requesting");
+    setGeoError("");
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCoords({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          accuracy: position.coords.accuracy,
+        });
+        setGeoStatus("granted");
+      },
+      (err) => {
+        setCoords(null);
+        setGeoStatus("denied");
+        setGeoError(geoErrorMessage(err));
+      },
+      GEO_OPTIONS
+    );
+  }, []);
+
+  useEffect(() => {
+    requestLocation();
+  }, [requestLocation]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (!formData.email || !formData.password) {
-      setError("Please enter both email and password");
+    if (!formData.email || !formData.password || !formData.securityPasscode) {
+      setError("Please enter your email, password and security passcode");
+      return;
+    }
+
+    if (!coords) {
+      setError("Location access is required to sign in. Enable it below and try again.");
       return;
     }
 
     setLoading(true);
 
     try {
-      let location = "Unknown";
-      let ipAddress = "Unknown";
+      // Coarse city label, purely a cross-check against the coordinates in
+      // the audit log. Best-effort: never block the login on it, and never
+      // send an IP — the server reads the real one from request headers.
+      let approxLocation = "";
       try {
         const ipRes = await fetch("https://ipapi.co/json/");
         const ipData = await ipRes.json();
         if (ipData && !ipData.error) {
-          location = `${ipData.city || ""}, ${ipData.region || ""}, ${ipData.country_name || ""}`.trim().replace(/^, |, $/g, "");
-          ipAddress = ipData.ip;
+          approxLocation = `${ipData.city || ""}, ${ipData.region || ""}, ${ipData.country_name || ""}`
+            .trim()
+            .replace(/^, |, $/g, "");
         }
-      } catch (locErr) {
-        console.warn("Could not fetch location data", locErr);
+      } catch {
+        // Ignore — this field is optional metadata.
       }
 
-      console.log("🔐 Attempting admin login with:", formData.email);
-      let data = await adminLogin(formData.email, formData.password, formData.securityPasscode, location, ipAddress);
+      // No fallback to a regular user login: a site user is not an admin,
+      // and the server no longer accepts a user token on admin routes.
+      const data = await adminLogin(
+        formData.email,
+        formData.password,
+        formData.securityPasscode,
+        coords,
+        approxLocation
+      );
 
       if (data.success) {
-        console.log("✅ Admin Login successful! Token saved.");
         setCurrentPage("admin-dashboard");
       } else {
-        if (data.message?.toLowerCase().includes("locked") || data.message?.toLowerCase().includes("try again in")) {
-          setError(data.message);
-        } else if (!formData.securityPasscode) {
-          console.log("⚠️ Admin login failed (no passcode), attempting user login...");
-          data = await userLogin(formData.email, formData.password);
-
-          if (data.success) {
-            console.log("✅ User Login successful! Token saved.");
-            setCurrentPage("admin-dashboard");
-          } else {
-            setError(data.message || "Login failed. Please check your credentials.");
-          }
-        } else {
-           setError(data.message || "Login failed. Please check your credentials.");
-        }
+        setError(data.message || "Login failed. Please check your credentials.");
       }
-    } catch (err) {
-      console.error("❌ Login error:", err);
+    } catch {
       setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
@@ -185,6 +239,7 @@ const AdminLogin = ({ setCurrentPage }) => {
                   placeholder="Admin Security Passcode"
                   value={formData.securityPasscode}
                   onChange={(e) => setFormData({ ...formData, securityPasscode: e.target.value })}
+                  required
                   className="admin-login-input w-full pl-10 pr-10 py-3 bg-[#0a0a0a] border border-white/10 rounded-lg text-white placeholder-white/30 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all text-xs shadow-inner"
                 />
                 <button
@@ -220,10 +275,49 @@ const AdminLogin = ({ setCurrentPage }) => {
                 </button>
               </div>
 
+              {/* Location gate — the server rejects an admin sign-in with no
+                  coordinates, so surface the permission state here instead of
+                  letting the request fail. */}
+              <div className="rounded-lg border border-white/10 bg-[#0a0a0a] p-3 text-xs">
+                <div className="flex items-start gap-2.5">
+                  <MapPin
+                    size={15}
+                    className={`mt-0.5 shrink-0 ${geoStatus === "granted" ? "text-emerald-400" : "text-gold/70"}`}
+                  />
+                  <div className="flex-1 min-w-0">
+                    {geoStatus === "granted" ? (
+                      <p className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                        <CheckCircle2 size={13} className="shrink-0" />
+                        Location confirmed
+                        <span className="font-normal text-white/40">
+                          (±{Math.round(coords?.accuracy ?? 0)} m)
+                        </span>
+                      </p>
+                    ) : geoStatus === "requesting" ? (
+                      <p className="text-white/60 font-semibold">Getting your location…</p>
+                    ) : (
+                      <>
+                        <p className="text-amber-400 font-semibold mb-1">Location access required</p>
+                        <p className="text-white/50 leading-relaxed">
+                          {geoError || "Admin sign-in records where it was used. Allow location to continue."}
+                        </p>
+                        <button
+                          type="button"
+                          onClick={requestLocation}
+                          className="mt-2 text-gold hover:text-gold-light font-semibold underline underline-offset-2 decoration-gold/50 transition-colors"
+                        >
+                          Retry
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
               {/* Submit */}
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !coords}
                 className="group w-full py-3 mt-1 rounded-lg bg-gradient-to-r from-gold to-[#f3e5ab] text-black font-bold text-sm transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (

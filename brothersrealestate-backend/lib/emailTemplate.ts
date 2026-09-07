@@ -166,7 +166,7 @@ export function getEnquiryConfirmationEmailTemplate(enquiry: EnquiryLike): strin
     <body>
         <div class="container">
             <div class="header">
-                <p class="wordmark">BROTHERS <span>ESTATE</span></p>
+                <p class="wordmark">BROTHERS <span>REAL ESTATE</span></p>
             </div>
             <div class="content">
                 <h1 class="title">Thank you, ${escapeHtml(name)}!</h1>
@@ -212,18 +212,38 @@ interface AdminLockedEmailOptions {
   reason: string;
   attempts: number;
   minutes: number;
+  /** Which lock this is for the account. Round 2+ means someone came back
+   *  after the previous lock expired, which reads very differently from a
+   *  one-off typo. */
+  round: number;
+  ipAddress: string;
+  /** Coordinates from the browser, or "Not provided". */
+  location: string;
+  mapsUrl: string | null;
+  userAgent: string;
+  emailAttempted: string;
 }
 
 // Sent to the admin when either lockout tier trips (see the two thresholds
-// in app/api/admin/login/route.ts). Deliberately doesn't include the IP or a
-// "was this you?" action link — the backend has no session/IP trail wired up
-// yet for failed attempts, and a fabricated action link would be worse than
-// none.
+// in app/api/admin/login/route.ts), once per lock — so a second round of
+// failed attempts after the first lock expires sends a second email.
+//
+// Carries the origin of the attempt (IP, coordinates, device) because
+// without it the alert can't answer the only question that matters: was
+// that me, or someone else? Still no "was this you?" action link — that
+// would need a signed one-time endpoint that doesn't exist yet, and a fake
+// one is worse than none.
 export function getAdminLockedEmailTemplate({
   adminName,
   reason,
   attempts,
   minutes,
+  round,
+  ipAddress,
+  location,
+  mapsUrl,
+  userAgent,
+  emailAttempted,
 }: AdminLockedEmailOptions): string {
   return `
     <!DOCTYPE html>
@@ -251,7 +271,7 @@ export function getAdminLockedEmailTemplate({
     <body>
         <div class="container">
             <div class="header">
-                <p class="wordmark">BROTHERS <span>ESTATE</span></p>
+                <p class="wordmark">BROTHERS <span>REAL ESTATE</span></p>
             </div>
             <div class="content">
                 <div style="text-align: center;">
@@ -271,6 +291,29 @@ export function getAdminLockedEmailTemplate({
                     <tr>
                         <td class="label">Reason</td>
                         <td class="value">${attempts} incorrect ${escapeHtml(reason)} attempts</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Lock number</td>
+                        <td class="value">#${round}${round > 1 ? " — repeated attempts on this account" : ""}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Email tried</td>
+                        <td class="value">${escapeHtml(emailAttempted)}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">IP address</td>
+                        <td class="value">${escapeHtml(ipAddress)}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Location</td>
+                        <td class="value">
+                            ${escapeHtml(location)}
+                            ${mapsUrl ? `<br><a href="${escapeHtml(mapsUrl)}" style="color:#b3261e;">View on map</a>` : ""}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Device</td>
+                        <td class="value" style="font-weight:400;font-size:12px;">${escapeHtml(userAgent) || "Unknown"}</td>
                     </tr>
                     <tr>
                         <td class="label">Time</td>

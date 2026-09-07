@@ -1,31 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
-import { errorResponse, HttpError } from "@/lib/errorResponse";
+import { errorResponse } from "@/lib/errorResponse";
+import { requireAdmin } from "@/lib/auth";
 import LoginHistory from "@/models/LoginHistory";
-import jwt from "jsonwebtoken";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const MAX_RECORDS = 200;
+
 export async function GET(request: NextRequest) {
   try {
     await connectDB();
-    
-    // Auth check
-    const authHeader = request.headers.get("authorization");
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      throw new HttpError(401, "Not authorized");
-    }
 
-    const token = authHeader.split(" ")[1];
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET as string) as any;
-    } catch (err) {
-      throw new HttpError(401, "Not authorized, token failed");
-    }
+    // Was hand-rolled here (verify the JWT, trust decoded.id) which accepted
+    // any valid token, including a regular site user's. requireAdmin resolves
+    // the id against the Admin collection.
+    const admin = await requireAdmin(request);
 
-    const history = await LoginHistory.find({ adminId: decoded.id }).sort({ createdAt: -1 });
+    const history = await LoginHistory.find({ adminId: admin._id })
+      .sort({ createdAt: -1 })
+      .limit(MAX_RECORDS)
+      .lean();
 
     return NextResponse.json({
       success: true,

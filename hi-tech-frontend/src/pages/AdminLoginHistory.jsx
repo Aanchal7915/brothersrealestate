@@ -53,8 +53,10 @@ const AdminLoginHistory = ({ setCurrentPage }) => {
             <thead>
               <tr className="bg-gray-50 border-b border-gray-100">
                 <th className="py-3 px-4 text-sm font-semibold text-gray-600">Date & Time</th>
+                <th className="py-3 px-4 text-sm font-semibold text-gray-600">Result</th>
                 <th className="py-3 px-4 text-sm font-semibold text-gray-600">Location</th>
                 <th className="py-3 px-4 text-sm font-semibold text-gray-600">IP Address</th>
+                <th className="py-3 px-4 text-sm font-semibold text-gray-600">Device</th>
               </tr>
             </thead>
             <tbody>
@@ -63,8 +65,41 @@ const AdminLoginHistory = ({ setCurrentPage }) => {
                   <td className="py-3 px-4 text-sm text-gray-700">
                     {format(new Date(record.createdAt), "dd MMM yyyy, hh:mm a")}
                   </td>
-                  <td className="py-3 px-4 text-sm text-gray-700">{record.location}</td>
+                  <td className="py-3 px-4 text-sm">
+                    {record.success === false ? (
+                      <span className="inline-block px-2 py-0.5 rounded-full bg-red-50 text-red-600 text-xs font-semibold">
+                        Failed{record.reason ? ` · ${record.reason}` : ""}
+                      </span>
+                    ) : (
+                      <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">
+                        Success
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-3 px-4 text-sm text-gray-700">
+                    {record.latitude != null && record.longitude != null ? (
+                      <a
+                        href={`https://www.google.com/maps?q=${record.latitude},${record.longitude}`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="text-gold hover:underline"
+                      >
+                        {record.location}
+                      </a>
+                    ) : (
+                      record.location || "Unknown"
+                    )}
+                    {record.approxLocationClaimed ? (
+                      <span className="block text-xs text-gray-400">{record.approxLocationClaimed}</span>
+                    ) : null}
+                  </td>
                   <td className="py-3 px-4 text-sm text-gray-700">{record.ipAddress}</td>
+                  <td
+                    className="py-3 px-4 text-xs text-gray-500 max-w-[220px] truncate"
+                    title={record.userAgent}
+                  >
+                    {record.userAgent || "—"}
+                  </td>
                 </tr>
               ))}
               

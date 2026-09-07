@@ -11,14 +11,14 @@ import {
   Shield,
 } from "lucide-react";
 import { UserAuthContext } from "../context/UserAuthContext";
-import { AuthContext } from "../context/AuthContext";
 import logo from "../assets/logo1.png";
 
 const AuthModal = ({ isOpen, onClose, setCurrentPage }) => {
   const { login: userLogin, signup, sendOtp } = useContext(UserAuthContext);
-  const { login: adminLogin } = useContext(AuthContext);
 
   const [mode, setMode] = useState("login"); // "login" or "signup"
+  // Whether to point this email at the dedicated admin sign-in page. It only
+  // changes where we send them — this modal cannot log an admin in.
   const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -60,14 +60,12 @@ const AuthModal = ({ isOpen, onClose, setCurrentPage }) => {
 
     try {
       if (isAdmin) {
-        // Admin Login
-        const result = await adminLogin(formData.email, formData.password);
-        if (result.success) {
-          onClose();
-          setCurrentPage("admin-dashboard");
-        } else {
-          setError(result.message || "Invalid admin credentials");
-        }
+        // Admin sign-in is not done here. This modal has no security-passcode
+        // field and no location gate, so it used to be a weaker second door
+        // into the admin panel for anyone who typed the hardcoded address.
+        // Send them to the real admin login instead.
+        onClose();
+        setCurrentPage("admin-login");
       } else if (mode === "login") {
         // User Login
         const result = await userLogin(formData.email, formData.password);

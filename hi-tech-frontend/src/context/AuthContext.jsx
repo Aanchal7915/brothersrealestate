@@ -39,17 +39,19 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = async (email, password, securityPasscode, location, ipAddress) => {
+  // `coords` is { latitude, longitude, accuracy } from the browser Geolocation
+  // API and is required by the server. `approxLocation` is the coarse
+  // IP-derived city string, sent only as a cross-check — the server derives
+  // the real IP from request headers and ignores anything we claim about it.
+  const login = async (email, password, securityPasscode, coords, approxLocation) => {
     try {
-      const response = await api.post("/admin/login", { 
-        email, 
-        password, 
-        securityPasscode, 
-        location, 
-        ipAddress 
+      const response = await api.post("/admin/login", {
+        email,
+        password,
+        securityPasscode,
+        location: coords,
+        approxLocation,
       });
-
-      console.log("Login API Response:", response.data);
 
       if (response.data.success) {
         // Extract token from response.data.data.token (based on adminController structure)
@@ -67,7 +69,6 @@ export const AuthProvider = ({ children }) => {
         message: response.data.message || "Login failed",
       };
     } catch (error) {
-      console.error("Login error:", error);
       return {
         success: false,
         message:

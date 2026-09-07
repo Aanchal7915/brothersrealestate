@@ -12,6 +12,15 @@ export interface AdminDocument extends Document {
    *  password failures above, since it has its own (stricter) threshold. */
   failedPasscodeAttempts: number;
   passcodeLockUntil: Date | null;
+  /** When the most recent failure happened, so a stale counter can expire
+   *  instead of accumulating across weeks (4 failures today + 1 next month
+   *  used to be enough to lock the account). */
+  lastFailedLoginAt: Date | null;
+  lastFailedPasscodeAt: Date | null;
+  /** How many times this account has been locked. Included in the alert
+   *  email so repeated rounds are visibly an attack, not a typo. */
+  lockCount: number;
+  passcodeLockCount: number;
   matchPassword(enteredPassword: string): Promise<boolean>;
 }
 
@@ -34,7 +43,7 @@ const adminSchema = new Schema<AdminDocument>(
     password: {
       type: String,
       required: [true, "Please add a password"],
-      minlength: [6, "Password must be at least 6 characters"],
+      minlength: [12, "Password must be at least 12 characters"],
       select: false,
     },
     createdAt: {
@@ -54,6 +63,22 @@ const adminSchema = new Schema<AdminDocument>(
     },
     passcodeLockUntil: {
       type: Date,
+    },
+    lastFailedLoginAt: {
+      type: Date,
+      default: null,
+    },
+    lastFailedPasscodeAt: {
+      type: Date,
+      default: null,
+    },
+    lockCount: {
+      type: Number,
+      default: 0,
+    },
+    passcodeLockCount: {
+      type: Number,
+      default: 0,
     },
   },
   {
