@@ -2,13 +2,12 @@
 // domains from the Express server's cors() config — those were specific to
 // the old brand's deployments. Local Vite dev server is always allowed.
 export const ALLOWED_ORIGINS = [
-  process.env.CLIENT_URL, 
   "https://brothersrealestate-swn9.vercel.app",
   "https://brothersrealestate.vercel.app",
   "http://localhost:5173", 
   "http://localhost:3000", 
   "http://localhost:3001"
-].filter((v): v is string => Boolean(v));
+];
 
 export function isOriginAllowed(origin: string | null): boolean {
   if (!origin) return false;
