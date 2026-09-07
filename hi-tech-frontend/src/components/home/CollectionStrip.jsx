@@ -83,9 +83,8 @@ const CollectionStrip = ({
         ) : items.length === 0 ? (
           <CuteLoader title="Nothing here just yet" text={emptyText} tone={tone} />
         ) : (
-          // One column on phones: at two columns a lone tile sat in the left half
-          // with dead space beside it, and every tile read as a narrow sliver.
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+          // User requested 2 columns on phones.
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
             {items.map((item, i) => (
               <Reveal key={item.key ?? i} delay={(i % 4) * 90} variant="up" className="h-full">
                 <button
