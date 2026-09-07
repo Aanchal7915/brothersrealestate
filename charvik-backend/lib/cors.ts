@@ -3,6 +3,8 @@
 // the old brand's deployments. Local Vite dev server is always allowed.
 export const ALLOWED_ORIGINS = [
   process.env.CLIENT_URL, 
+  "https://brothersrealestate-swn9.vercel.app",
+  "https://brothersrealestate.vercel.app",
   "http://localhost:5173", 
   "http://localhost:3000", 
   "http://localhost:3001"
