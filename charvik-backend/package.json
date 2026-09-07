@@ -2,6 +2,7 @@
   "name": "brothers-estate-backend",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Brothers Realestate real estate API (Next.js App Router, API-only)",
   "scripts": {
     "dev": "next dev -p 5000",
