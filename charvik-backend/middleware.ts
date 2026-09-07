@@ -1,26 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
-import { corsHeaders } from "./lib/cors";
 
-// Applies CORS headers to every /api/* request and short-circuits OPTIONS
-// preflight requests, replacing Express's `cors()` middleware.
 export function middleware(request: NextRequest) {
-  try {
-    const origin = request.headers.get("origin");
-    const headers = corsHeaders(origin);
+  const origin = request.headers.get("origin") || "*";
+  
+  const headers = new Headers();
+  headers.set("Access-Control-Allow-Origin", origin);
+  headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  headers.set("Access-Control-Allow-Credentials", "true");
 
-    if (request.method === "OPTIONS") {
-      return new NextResponse(null, { status: 204, headers });
-    }
-
-    const response = NextResponse.next();
-    for (const [key, value] of Object.entries(headers)) {
-      response.headers.set(key, value);
-    }
-    return response;
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message + " " + error.stack : String(error);
-    return new NextResponse(JSON.stringify({ error: "Middleware Error", details: errorMessage }), { status: 500 });
+  if (request.method === "OPTIONS") {
+    return new NextResponse(null, { status: 204, headers });
   }
+
+  const response = NextResponse.next();
+  response.headers.set("Access-Control-Allow-Origin", origin);
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  response.headers.set("Access-Control-Allow-Credentials", "true");
+  
+  return response;
 }
 
 export const config = {
