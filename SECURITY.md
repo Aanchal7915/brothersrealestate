@@ -84,10 +84,13 @@ variable again**.
 
 ## Known gaps, not addressed here
 
-- **`seedAdmin.cjs` contains a live MongoDB connection string with its
-  password, the admin email, and the password `123456`** — left in place at
-  your request. It is in git history regardless, so rotate the MongoDB
-  credential in Atlas and change that admin's password.
+- **`seedAdmin.cjs` used to contain a live MongoDB connection string, a
+  hardcoded admin email, and the password `123456`.** It now reads
+  `MONGO_URI`, `SEED_ADMIN_NAME`, `SEED_ADMIN_EMAIL`, and `SEED_ADMIN_PASSWORD`
+  from the environment and refuses to run without them. **This does not undo
+  the exposure** — that credential is still in this repo's git history and
+  must be treated as compromised. Rotate the MongoDB Atlas credential and
+  change that admin's password if you haven't already.
 - Tokens are 7-day JWTs held in `localStorage` with no revocation list; a
   stolen token stays valid until it expires.
 - There is no password-reset flow, so the "Forgot Password?" link on the login
