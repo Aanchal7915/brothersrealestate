@@ -1,4 +1,5 @@
 import { MapPin, BedDouble, ChevronRight, Heart } from "lucide-react";
+import { optimizedImageUrl } from "../../utils/cloudinaryUrl";
 
 const FALLBACK =
   "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=75";
@@ -20,7 +21,7 @@ export const luxePrice = (value, isRental = false) => {
 export const isNewLaunch = (property) => Boolean(property?.featured);
 
 const PropertyTile = ({ property, onOpen, isFavourite, onToggleFavourite }) => {
-  const image = property.images?.[0]?.url || property.images?.[0] || FALLBACK;
+  const image = optimizedImageUrl(property.images?.[0]?.url || property.images?.[0] || FALLBACK);
   const isRental = Boolean(property.rentalCategory);
   const showNewLaunch = isNewLaunch(property);
   const favourite = Boolean(isFavourite);

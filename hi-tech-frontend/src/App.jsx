@@ -30,7 +30,6 @@ import ThankYou from "./pages/ThankYou";
 import ChatBot from "./components/ChatBot";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import MobileActionBar from "./components/MobileActionBar";
-import SocialBar from "./components/SocialBar";
 import TimedWhatsAppPopup from "./components/TimedWhatsAppPopup";
 import { UserAuthProvider } from "./context/UserAuthContext";
 import "./styles/index.css";
@@ -449,8 +448,6 @@ function App() {
                   setCurrentPage={setCurrentPage}
                 />
               )}
-              {/* Site-wide right-side social icons */}
-              {currentPage !== "project" && <SocialBar />}
               <ErrorBoundary>
                 {renderPage()}
               </ErrorBoundary>

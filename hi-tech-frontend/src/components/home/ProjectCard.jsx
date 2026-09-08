@@ -1,5 +1,6 @@
 import { MapPin, Bed, Maximize, CalendarClock, ArrowRight, Tag } from "lucide-react";
 import { propertyTypeLabel } from "../../utils/propertyType";
+import { optimizedImageUrl } from "../../utils/cloudinaryUrl";
 
 const FALLBACK_IMAGE =
   "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=70";
@@ -30,8 +31,9 @@ const TONES = {
 
 /** `badge` lets a page force its own label (the rent page always says "For Rent"). */
 const ProjectCard = ({ property, onClick, badge: badgeOverride }) => {
-  const image =
-    property.images?.[0]?.url || property.images?.[0] || FALLBACK_IMAGE;
+  const image = optimizedImageUrl(
+    property.images?.[0]?.url || property.images?.[0] || FALLBACK_IMAGE
+  );
   const isRental = Boolean(property.rentalCategory);
   const badge = badgeOverride || deriveBadge(property);
 

@@ -3,6 +3,7 @@ import GoldDivider from "../luxury/GoldDivider";
 import Reveal from "./Reveal";
 import Loader from "../Loader";
 import CuteLoader from "../CuteLoader";
+import { optimizedImageUrl } from "../../utils/cloudinaryUrl";
 
 const FALLBACK =
   "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=800&q=70";
@@ -92,7 +93,7 @@ const CollectionStrip = ({
                   className="group relative block h-56 w-full overflow-hidden text-left ring-1 ring-black/[0.07] transition-all duration-500 ease-[cubic-bezier(.22,.61,.36,1)] hover:-translate-y-1.5 hover:ring-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold motion-reduce:hover:translate-y-0 sm:h-64"
                 >
                   <img
-                    src={item.image || FALLBACK}
+                    src={optimizedImageUrl(item.image) || FALLBACK}
                     alt={item.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(.22,.61,.36,1)] group-hover:scale-[1.08] motion-reduce:group-hover:scale-100"

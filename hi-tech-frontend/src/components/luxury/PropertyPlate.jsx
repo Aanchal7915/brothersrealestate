@@ -1,5 +1,6 @@
 import { MapPin, BedDouble, ArrowUpRight } from "lucide-react";
 import Reveal from "../home/Reveal";
+import { optimizedImageUrl } from "../../utils/cloudinaryUrl";
 
 const FALLBACK =
   "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=75";
@@ -18,7 +19,7 @@ const luxePrice = (value, isRental = false) => {
  * project name, with supporting facts revealed on hover.
  */
 const PropertyPlate = ({ property, index = 0, onOpen }) => {
-  const image = property.images?.[0]?.url || property.images?.[0] || FALLBACK;
+  const image = optimizedImageUrl(property.images?.[0]?.url || property.images?.[0] || FALLBACK);
   const isRental = Boolean(property.rentalCategory);
   const config = property.configuration || (property.bhk ? `${property.bhk} BHK` : null);
   const isCommercial = property.propertyType === "commercial";
